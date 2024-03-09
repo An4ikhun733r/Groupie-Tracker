@@ -1,91 +1,29 @@
-# groupie-tracker-search-bar
+## groupie-tracker
 
-## Description
+### Objectives
 
-    This is an optional subroutine of the groupie-tracker. It involves adding a new element - the search bar. The search will be performed according to the following criteria: by the name of the artists or by the names of the groups, by the name of the participants, by locations, by the date of creation or by the date of the first album.
+Groupie Trackers consists on receiving a given API and manipulate the data contained in it, in order to create a site, displaying the information.
 
-## Autors
+- It will be given an [API](https://groupietrackers.herokuapp.com/api), that consists in four parts:
 
-    The project was developed by yzhumyroб akalbiat and rneverov, yzhumyro was responsible for the front-end and assistant in the back-end, akalbiat and rneverov in turn helped with the front-end and was responsible for the back-end
+  - The first one, `artists`, containing information about some bands and artists like their name(s), image, in which year they began their activity, the date of their first album and the members.
 
-## Usage
+  - The second one, `locations`, consists in their last and/or upcoming concert locations.
 
-    Go to the project directory. Next, enter the command to go to the directory with the main project file:
+  - The third one, `dates`, consists in their last and/or upcoming concert dates.
 
-    go run .
+  - And the last one, `relation`, does the link between all the other parts, `artists`, `dates` and `locations`.
 
-    After launching the project, follow this link --> http://localhost:4000/
+- Given all this you should build a user friendly website where you can display the bands info through several data visualizations (examples : blocks, cards, tables, list, pages, graphics, etc). It is up to you to decide how you will display it.
 
-    To see more information about an artist or a band, CLICK on their profile
+- This project also focuses on the creation of events/actions and on their visualization.
 
-## Implementation details:
+  - The event/action we want you to do is known as a client call to the server (client-server). We can say it is a feature of your choice that needs to trigger an action. This action must communicate with the server in order to recieve information, ([request-response])(https://en.wikipedia.org/wiki/Request%E2%80%93response)
+  - An event consists in a system that responds to some kind of action triggered by the client, time, or any other factor.
 
-    Consider this function
-
-    What happens in this function:
-    1. If the variable containing the text from the search bar is empty, then all artists are returned
-    2. A variable containing the search text is converted to lowercase for search regardless of case
-    3. The searched variables are created to store the artists that fall under the search and the heck variable to check for a match in the Artist Locations field
-    4. A loop is set to iterate through all the artists
-    5. Next are the checks: the Name field is checked first, after the First Album field is checked, and 3 the CreationDate field is checked, if there was a match, the cycle ends
-    6. Next, a loop is set to iterate through the Members field
-    7. If one of the elements matches, the loop ends and skips the next check
-    8. If there was no match up to this point, the check for the Locations field begins and iterates through its elements using a loop
-    9. Return a variable that stores matched artists
-```` golang
-    func Searching(searchingText string) []Artists {
-    	if searchingText == "" {
-		return Artist
-	}
-	
-	searchingText = strings.ToLower(searchingText)
-	var searched []Artists
-	var check bool
-
-	for i := 0; i < len(Artist); i++ {
-		if strings.ToLower(Artist[i].Name) != strings.ReplaceAll(strings.ToLower(Artist[i].Name), searchingText, "") {
-			searched = append(searched, Artist[i])
-
-			continue
-		}
-
-		if strings.ToLower(Artist[i].FirstAlbum) != strings.ReplaceAll(strings.ToLower(Artist[i].FirstAlbum), searchingText, "") {
-			searched = append(searched, Artist[i])
-
-			continue
-		}
-
-		if strings.ToLower(strconv.Itoa(Artist[i].CreationDate)) != strings.ReplaceAll(strings.ToLower(strconv.Itoa(Artist[i].CreationDate)), searchingText, "") {
-			searched = append(searched, Artist[i])
-
-			continue
-		}
-
-		for k := 0; k < len(Artist[i].Members); k++ {
-			check = true
-
-			if strings.ToLower(Artist[i].Members[k]) != strings.ReplaceAll(strings.ToLower(Artist[i].Members[k]), searchingText, "") {
-				searched = append(searched, Artist[i])
-
-				check = false
-
-				break
-			}
-		}
-
-		if check {
-			for j := 0; j < len(Artist[i].Locations.Locations); j++ {
-				if strings.ToLower(Artist[i].Locations.Locations[j]) != strings.ReplaceAll(strings.ToLower(Artist[i].Locations.Locations[j]), searchingText, "") {
-					searched = append(searched, Artist[i])
-
-					break
-				}
-			}
-		}
-	}
-
-	return searched
-
-    //Using this function, a search is implemented in the subroutine groupie-tracker-search-bar
-}
-````
+### Instructions
+  - To run project: 
+  - go run main.go
+### Made by
+  - anospanov  
+  - zmaulenov
