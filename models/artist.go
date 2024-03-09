@@ -1,4 +1,4 @@
-package templates
+package models
 
 type (
 	Artists struct {

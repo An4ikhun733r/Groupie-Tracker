@@ -1,0 +1,126 @@
+h1::after {
+    content: '</>';
+    display: inline-block;
+    animation: animateDot 0.6s infinite alternate;
+}
+
+@keyframes animateDot {
+    to {
+        opacity: 0;
+    }
+}
+
+.filter-container {
+    background-color: #1a1b20;
+    display: flex;
+    align-items: center;
+    justify-content:space-between
+}
+
+.filters {
+    display: grid;
+    max-width: 20%;
+}
+
+.filters-range {
+    margin-top: 10px;
+    display: flex;
+}
+
+.filters-range label {
+    margin-right: 10px;
+}
+
+.filters-range input {
+    margin-right: 10px;
+}
+
+.filter-select {
+    min-width: 50px;
+    width: 10%;
+}
+
+#reset {
+    margin-right: 30px;
+}
+
+.filter-container, .search-container {
+    padding: 30px;
+}
+
+.search-container {
+    text-align: center;
+}
+
+.search-container button {
+    margin-left: 30px;
+}
+
+#searchInput {
+    border: none;
+    outline: none;
+    background-color: transparent;
+    color: #fff;
+    font-size: 1em;
+    padding: 5px;
+    border-bottom: 1px solid #fff;
+    max-width: 300px;
+}
+
+#searchInput:focus {
+    border-bottom: 1px solid #14e383;
+}
+
+.suggestions-container {
+    position: absolute;
+    left:39.4%;
+    right:39.4%;
+    text-align: left;
+    background-color: #16171b;
+    color: #fff;
+    z-index: 1000;
+    display: none;
+    padding: 4px;
+    margin-top: 5px;
+    opacity: 0.5;
+  }
+
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 30px 10% 10% 10%;
+}
+
+.block {
+    background-color: #1a1b20;
+    max-width: 300px;
+    width: 20%;
+    margin: 30px;
+    box-sizing: border-box;
+    box-shadow: 3px 3px #16171b, -1em 0 .4em #16171b;
+}
+
+.block a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.block img {
+    width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 30px;
+}
+
+.block h4 {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 30px;
+    transition: color 0.3s, font-weight 0.3s;
+}
+
+.block h4:hover {
+    color: #14e383;
+    font-weight: bold;
+}

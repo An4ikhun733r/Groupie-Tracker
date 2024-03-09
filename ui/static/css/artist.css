@@ -1,0 +1,93 @@
+#block {
+    background-color: #1a1b20;
+}
+
+.artist-name, .artist-image, .artist-members, .artist-creation, .artist-album, .artist-locations, .map {
+    box-shadow: 3px 3px #16171b, -1em 0 .4em #16171b;
+}
+
+.content {
+    width: 80%;
+    margin: 10%;
+}
+
+.artist-name {
+    width: 100%;
+    margin-bottom: 30px;
+    text-align: center;
+    padding: 10px 0px 10px 0px;
+}
+
+.artist-content {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.artist-image {
+    width: 30%;
+    margin-right: 30px;
+}
+
+.artist-image img {
+    width: 100%;
+}
+
+.artist-description {
+    width: 70%;
+    display: grid;
+}
+
+span {
+    color: #969696;
+}
+
+.date {
+    width: 100%;
+    display: flex;
+}
+
+.artist-creation {
+    margin-right: 30px;
+}
+
+.artist-creation, .artist-album {
+    width: 50%;
+}
+
+.artist-members {
+    margin-bottom: 30px;
+}
+
+.artist-members, .artist-creation, .artist-album, .artist-locations {
+    text-align: left;
+    padding: 30px;
+}
+
+.locations {
+    width: 100%;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.artist-locations {
+    width: 20%;
+    margin-right: 30px;
+}
+
+.map {
+    width: 80%;
+    padding: 30px
+}
+
+iframe {
+    width: 100%;
+    height: 100%;
+    filter: invert(100%);
+}
+
+.buttons {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}

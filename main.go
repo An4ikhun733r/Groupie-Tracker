@@ -1,9 +1,9 @@
 package main
 
 import (
-	"groupie-tracker/backend/server"
+	"groupie-tracker/cmd/web"
 )
 
 func main() {
-	server.Server()
+	web.Server()
 }

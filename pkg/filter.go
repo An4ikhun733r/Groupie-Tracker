@@ -1,92 +1,14 @@
-package backend
+package pkg
 
 import (
-	"encoding/json"
-	"fmt"
-	"groupie-tracker/templates"
-	"io/ioutil"
-	"net/http"
+	"groupie-tracker/models"
 	"strconv"
 	"strings"
-	"unicode"
 )
 
-var Artist []templates.Artists
+func Filtering(creation_min string, creation_max string, album_min string, album_max string, members_min string, members_max string, location string) []models.Artists {
+	var filtered []models.Artists
 
-func GetData(data interface{}, url string) error {
-	apiURL := url
-
-	response, err := http.Get(apiURL)
-	if err != nil {
-		fmt.Println("Error making GET request: ", err)
-		return err
-	}
-	defer response.Body.Close()
-
-	body, err := ioutil.ReadAll(response.Body)
-	if err != nil {
-		return err
-	}
-
-	err = json.Unmarshal(body, &data)
-	if err != nil {
-		return err
-	}
-	return nil
-}
-
-func BasicData() error {
-	for i := 0; i < len(Artist); i++ {
-		err := AdditionalData(i + 1)
-		if err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-func AdditionalData(id int) error {
-	location := templates.StructLocations{}
-	GetData(&location, "https://groupietrackers.herokuapp.com/api/locations/"+strconv.Itoa(id))
-
-	Artist[id-1].Locations = location
-
-	date := templates.StructConcertDates{}
-	GetData(&date, "https://groupietrackers.herokuapp.com/api/dates/"+strconv.Itoa(id))
-
-	Artist[id-1].ConcertDates = date
-
-	relation := templates.StructRelations{}
-	GetData(&relation, "https://groupietrackers.herokuapp.com/api/relation/"+strconv.Itoa(id))
-	Artist[id-1].Relations = relation
-
-	return nil
-}
-
-func IsValid(id string) bool {
-	if id == "" {
-		return false
-	}
-	for _, char := range id {
-		if !unicode.IsDigit(char) {
-			return false
-		}
-	}
-	if id[0] == '0' {
-		return false
-	}
-	return true
-}
-
-func IsRange(id int) bool {
-	if id < 1 || id > 52 {
-		return false
-	}
-	return true
-}
-
-func Filtering(creation_min string, creation_max string, album_min string, album_max string, members_min string, location string) []templates.Artists {
-	var filtered []templates.Artists
 	for i := 0; i < len(Artist); i++ {
 		check_location := false
 		if location != "All" {
@@ -112,7 +34,7 @@ func Filtering(creation_min string, creation_max string, album_min string, album
 		}
 
 		check_members := false
-		if strconv.Itoa(len(Artist[i].Members)) == members_min {
+		if strconv.Itoa(len(Artist[i].Members)) >= members_min && strconv.Itoa(len(Artist[i].Members)) <= members_max {
 			check_members = true
 		}
 

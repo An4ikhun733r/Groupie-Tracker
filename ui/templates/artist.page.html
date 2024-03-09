@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='utf-8'>
+        <title>groupie-tracker</title>
+        <link rel='stylesheet' href='/static/css/global.css'>
+        <link rel='stylesheet' href='/static/css/artist.css'>
+        <link rel='stylesheet' href='/static/css/buttons.css'>
+        <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto+Slab'>
+    </head>
+    <body> 
+        <div class="content">
+            <div class="artist-name" id="block">
+                <h2>{{.Name}}</h2>
+            </div>
+
+            <div class="artist-content">
+                <div class="artist-image" id="block">
+                    <img src="{{.Image}}">
+                </div>
+
+                <div class="artist-description">
+                    <div class="artist-members" id="block">
+                        <span>MEMBERS:</span>
+                        <br>
+                        <br>
+                        {{range .Members }}
+                            {{.}}
+                        {{end}}
+                    </div>
+
+                    <div class="date">
+                        <div class="artist-creation" id="block">
+                            <span>DATE OF CREATION:</span>
+                            <h4>{{.CreationDate}}</h4>
+                        </div>
+
+                        <div class="artist-album" id="block">
+                            <span>DATE OF FIRST ALBUM:</span>
+                            <h4>{{.FirstAlbum}}</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="locations">
+                <div class="artist-locations" id="block">
+                    <span>UPCOMING CONCERTS:</span>
+                    {{range $location, $dates := .Relations.DatesLocations}}
+                        <br>
+                        <br>
+                        {{$location}}:
+                        <br>
+                        <br>
+                        {{range $dates}}
+                            <span>{{.}}</span>
+                        {{end}}
+                    {{end}}
+                </div>
+
+                <div class="map" id="block">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2506.0671159487038!2d71.41130127779124!3d51.08876887172117!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4245850726a35635%3A0xfb1114cb828ef0a!2salem%20school!5e0!3m2!1sru!2skz!4v1702060069080!5m2!1sru!2skz" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+                
+            </div>
+            
+            <div class="buttons">
+                <button id="previous" onclick="Previous()">PREVIOUS</button>
+
+                <a href="/">
+                    <button>BACK</button>
+                </a>
+
+                <button id="next" onclick="Next()">NEXT</button>
+            </div>
+        </div>
+
+        <script src="/static/javascript/prevnext.js"></script>
+    </body>
+</html>
