@@ -18,5 +18,5 @@ func Server() {
 
 	log.Println("Starting server on http://localhost:4000")
 
-	http.ListenAndServe(":4000", mux)
+	http.ListenAndServe(":8000", mux)
 }
